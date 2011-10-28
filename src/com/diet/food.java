@@ -15,7 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-public class diet extends Activity 
+public class food extends Activity 
 {
     private ListView listview;
     private String abouttp;
@@ -28,7 +28,7 @@ public class diet extends Activity
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.diet);
+        setContentView(R.layout.food);
         
         listview = (ListView)findViewById(R.id.listview);
         
@@ -72,7 +72,7 @@ public class diet extends Activity
 	        			   	break;
 	        		   case 1:
 		       				Intent intent = new Intent();
-		    				intent.setClass(diet.this, dlogin.class);
+		    				intent.setClass(food.this, dlogin.class);
 		    		
 		    				startActivity(intent);
 	        			   	break;

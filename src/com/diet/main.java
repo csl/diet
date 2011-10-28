@@ -15,7 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-public class diet extends Activity 
+public class main extends Activity 
 {
     private ListView listview;
     private String abouttp;
@@ -28,31 +28,49 @@ public class diet extends Activity
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.diet);
+        setContentView(R.layout.main);
         
         listview = (ListView)findViewById(R.id.listview);
-        
-        //String list
-	    abouttp = (String) this.getResources().getText(R.string.about_me);
         
         menu = new ArrayList<HashMap<String, Object>>();
         
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("ItemTitle", "關於我" );
-		map.put("ItemText", "about me");
+		map.put("ItemTitle", "BMI值檢測" );
+		map.put("ItemText", "BMI checking");
 		menu.add(map);
 
 		map = new HashMap<String, Object>();
-		map.put("ItemTitle", "登錄" );
-		map.put("ItemText", "login");
+		map.put("ItemTitle", "食物攝取" );
+		map.put("ItemText", "eat food");
 		menu.add(map);
 
 		map = new HashMap<String, Object>();
-		map.put("ItemTitle", "離開" );
-		map.put("ItemText", "exit");
+		map.put("ItemTitle", "運動耗量" );
+		map.put("ItemText", "sport");
+		menu.add(map);
+
+		map = new HashMap<String, Object>();
+		map.put("ItemTitle", "健康資訊" );
+		map.put("ItemText", "health information");
+		menu.add(map);
+
+		map = new HashMap<String, Object>();
+		map.put("ItemTitle", "輸入日期紀錄" );
+		map.put("ItemText", "input data/record");
 		menu.add(map);
 		
-        SimpleAdapter listitemAdapter=new SimpleAdapter(this,  
+		map = new HashMap<String, Object>();
+		map.put("ItemTitle", "行事曆&備忘錄" );
+		map.put("ItemText", "");
+		menu.add(map);
+
+		map = new HashMap<String, Object>();
+		map.put("ItemTitle", "登出" );
+		map.put("ItemText", "login out");
+		menu.add(map);
+		
+		
+		SimpleAdapter listitemAdapter=new SimpleAdapter(this,  
         										menu, 
         										R.layout.no_listview_style,
         										new String[]{"ItemTitle","ItemText"}, 
@@ -65,19 +83,49 @@ public class diet extends Activity
         	   public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,  
         	     long arg3) 
         	   {
+        		   
+        		   Intent intent = null;
+        		   
         		   switch (arg2)
         		   {
 	        		   case 0:
-	        			    openOptionsDialog(abouttp);
+		       				intent = new Intent();
+		    				intent.setClass(main.this, diet.class);
+		    		
+		    				startActivity(intent);
 	        			   	break;
 	        		   case 1:
-		       				Intent intent = new Intent();
-		    				intent.setClass(diet.this, dlogin.class);
+		       				intent = new Intent();
+		    				intent.setClass(main.this, diet.class);
 		    		
 		    				startActivity(intent);
 	        			   	break;
 	        		   case 2:
-	        			   	finish();
+		       				intent = new Intent();
+		    				intent.setClass(main.this, diet.class);
+		    		
+		    				startActivity(intent);
+	        			   	break;
+	        		   case 3:
+		       				intent = new Intent();
+		    				intent.setClass(main.this, diet.class);
+		    		
+		    				startActivity(intent);
+	        			   	break;
+	        		   case 4:
+		       				intent = new Intent();
+		    				intent.setClass(main.this, diet.class);
+		    		
+		    				startActivity(intent);
+	        			   	break;
+	        		   case 5:
+		       				intent = new Intent();
+		    				intent.setClass(main.this, diet.class);
+		    		
+		    				startActivity(intent);
+	        			   	break;
+	        		   case 6:
+	        			    finish();
 	        			   	break;
         		   }
         	   }  
