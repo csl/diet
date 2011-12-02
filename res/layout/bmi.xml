@@ -65,7 +65,7 @@ android:textColor="@color/black"
 >
 </TextView>
 <EditText
-android:id="@+id/widget85"
+android:id="@+id/height"
 android:layout_width="158px"
 android:layout_height="wrap_content"
 android:padding="10px"
@@ -92,7 +92,7 @@ android:textColor="@color/black"
 >
 </TextView>
 <EditText
-android:id="@+id/widget88"
+android:id="@+id/weight"
 android:layout_width="158px"
 android:layout_height="wrap_content"
 android:padding="10px"
@@ -116,4 +116,16 @@ android:layout_gravity="center_vertical"
 >
 </Button>
 </TableRow>
+<TextView
+android:id="@+id/result"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:padding="20px"
+android:text="&#39636;&#37325;(kg)"
+android:textSize="20sp"
+android:typeface="serif"
+android:textStyle="bold"
+android:textColor="@color/black"
+>
+</TextView>    
 </LinearLayout>
