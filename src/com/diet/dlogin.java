@@ -50,8 +50,11 @@ public class dlogin extends Activity
         { 
           public void onClick(View v) 
           { 
-        	  
-          } 
+				Intent intent = new Intent();
+				intent.setClass(dlogin.this, main.class);
+		
+				startActivity(intent);   
+		  } 
         }); 
         
         Button mButton03 = (Button)findViewById(R.id.fb); 
@@ -59,7 +62,7 @@ public class dlogin extends Activity
         { 
           public void onClick(View v) 
           { 
-        	  
+        	  finish();
           } 
         }); 
         

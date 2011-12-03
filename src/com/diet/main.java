@@ -90,7 +90,7 @@ public class main extends Activity
         		   {
 	        		   case 0:
 		       				intent = new Intent();
-		    				intent.setClass(main.this, diet.class);
+		    				intent.setClass(main.this, bmi.class);
 		    		
 		    				startActivity(intent);
 	        			   	break;

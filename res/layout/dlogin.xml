@@ -18,7 +18,7 @@ android:id="@+id/widget45"
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"
 android:text="&#25105;&#30340;&#23436;&#32654;&#28187;&#32933;&#26085;&#35352;"
-android:textSize="30sp"
+android:textSize="26sp"
 android:typeface="serif"
 android:textStyle="bold"
 android:textColor="@color/black"
@@ -32,17 +32,17 @@ android:layout_width="fill_parent"
 android:layout_height="31px"
 android:orientation="horizontal"
 >
-<TextView
-android:id="@+id/widget53"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:background="#ffffcccc"
-android:text="&#30331;&#20837;&#38913;&#38754;"
-android:textSize="16sp"
-android:typeface="serif"
-android:textStyle="bold"
->
-</TextView>
+
+    <TextView
+        android:id="@+id/widget53"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffcccc"
+        android:text="登入頁面"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
 </TableRow>
 <TableRow
 android:id="@+id/widget55"
@@ -60,14 +60,17 @@ android:textSize="24px"
 android:textColor="@color/black"
 >
 </TextView>
+
 <EditText
-android:id="@+id/id"
-android:layout_width="203px"
-android:layout_height="wrap_content"
-android:padding="10px"
-android:textSize="18sp"
->
+    android:id="@+id/id"
+    android:layout_width="203px"
+    android:layout_height="wrap_content"
+    android:padding="10px"
+    android:textSize="18sp" >
+
+    <requestFocus />
 </EditText>
+
 </TableRow>
 <TableRow
 android:id="@+id/widget58"
@@ -85,15 +88,15 @@ android:textSize="16sp"
 android:textColor="@color/black"
 >
 </TextView>
+
 <EditText
-android:id="@+id/pwd"
-android:layout_width="180px"
-android:layout_height="wrap_content"
-android:padding="10px"
-android:textSize="18sp"
-android:password="true"
->
-</EditText>
+    android:id="@+id/pwd"
+    android:layout_width="200px"
+    android:layout_height="wrap_content"
+    android:padding="10px"
+    android:password="true"
+    android:textSize="18sp" />
+
 </TableRow>
 <TableRow
 android:id="@+id/widget65"

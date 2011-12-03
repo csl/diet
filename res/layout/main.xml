@@ -19,25 +19,26 @@ android:layout_width="fill_parent"
 android:layout_height="42px"
 android:background="#ffffccff"
 android:text="&#21151;&#33021;&#20027;&#36984;&#21934;"
-android:textSize="28sp"
+android:textSize="26sp"
 android:typeface="serif"
 android:textStyle="bold"
 android:gravity="center"
 >
 </TextView>
 </TableRow>
+
+<ListView
+    android:id="@+id/listview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/firstimg" >
+</ListView>
+
 <TableRow
 android:id="@+id/widget39"
 android:layout_width="fill_parent"
 android:layout_height="388px"
 android:orientation="horizontal"
 >
-<ListView
-android:id="@+id/listview"
-android:background="@drawable/firstimg"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
->
-</ListView>
 </TableRow>
 </LinearLayout>

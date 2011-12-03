@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class bmi extends Activity implements OnClickListener
 {
@@ -41,6 +42,9 @@ public class bmi extends Activity implements OnClickListener
         
         Button A = (Button)findViewById(R.id.calBMI);
         A.setOnClickListener(this);
+        
+        Toast popup =  Toast.makeText(bmi.this, "請按上鍵頭跳出", Toast.LENGTH_SHORT);
+        popup.show();
  
         
     }
@@ -49,7 +53,17 @@ public class bmi extends Activity implements OnClickListener
     {
     	switch (v.getId()) {
 	        case R.id.calBMI: // Do something when click button1
-	        	bmi = Integer.valueOf(weight.getText().toString()) / Integer.valueOf(height.getText().toString());
+	        	
+	        	if (height.getText().toString().equals("") || weight.getText().toString().equals(""))
+	        	{
+	        		openOptionsDialog("field is null");
+	        		return;
+	        	}
+	        	
+	        	int h = Integer.valueOf(height.getText().toString());
+	        	int w = Integer.valueOf(weight.getText().toString());
+	        		        	
+	        	bmi = (double) h / w;
 	        	
 	        	String msg = "您的BMI值為: " + bmi;
 	        	
@@ -63,7 +77,7 @@ public class bmi extends Activity implements OnClickListener
 	        	}
 	        	else if (bmi >= 24 && bmi < 27)
 	        	{
-	        		msg = msg + "\n過    重";
+	        		msg = msg + "\n過  重";
 	        	}
 	        	else if (bmi >= 24 && bmi < 27)
 	        	{
@@ -86,7 +100,7 @@ public class bmi extends Activity implements OnClickListener
     private void openOptionsDialog(String info)
 	{
 	    new AlertDialog.Builder(this)
-	    .setTitle("result")
+	    .setTitle("msg")
 	    .setMessage(info)
 	    .setPositiveButton("OK",
 	        new DialogInterface.OnClickListener()
