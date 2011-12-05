@@ -10,18 +10,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 
-public class food extends Activity 
+public class food extends Activity implements OnClickListener
 {
-    private ListView listview;
-    private String abouttp;
-    
-    public ProgressDialog myDialog = null;
-	private ArrayList<HashMap<String, Object>> menu;
+
+	static public int kind_id = 0;
     
     /** Called when the activity is first created. */
     @Override
@@ -30,59 +31,41 @@ public class food extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food);
         
-        listview = (ListView)findViewById(R.id.listview);
+        Button A = (Button)findViewById(R.id.cal);
+        A.setOnClickListener(this);
+        Button B = (Button)findViewById(R.id.exit);
+        B.setOnClickListener(this);
+        Button C = (Button)findViewById(R.id.foodchoice);
+        C.setOnClickListener(this);
         
-        //String list
-	    abouttp = (String) this.getResources().getText(R.string.about_me);
+        Spinner spinner = (Spinner) findViewById(R.id.foodkind);
         
-        menu = new ArrayList<HashMap<String, Object>>();
-        
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("ItemTitle", "關於我" );
-		map.put("ItemText", "about me");
-		menu.add(map);
+        String strlist [] = "";
 
-		map = new HashMap<String, Object>();
-		map.put("ItemTitle", "登錄" );
-		map.put("ItemText", "login");
-		menu.add(map);
-
-		map = new HashMap<String, Object>();
-		map.put("ItemTitle", "離開" );
-		map.put("ItemText", "exit");
-		menu.add(map);
-		
-        SimpleAdapter listitemAdapter=new SimpleAdapter(this,  
-        										menu, 
-        										R.layout.no_listview_style,
-        										new String[]{"ItemTitle","ItemText"}, 
-        										new int[]{R.id.topTextView,R.id.bottomTextView}  
-        										);  
-        listview.setAdapter(listitemAdapter);              
-        listview.setOnItemClickListener(new OnItemClickListener() 
-        {          
-        	   @Override  
-        	   public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,  
-        	     long arg3) 
-        	   {
-        		   switch (arg2)
-        		   {
-	        		   case 0:
-	        			    openOptionsDialog(abouttp);
-	        			   	break;
-	        		   case 1:
-		       				Intent intent = new Intent();
-		    				intent.setClass(food.this, dlogin.class);
-		    		
-		    				startActivity(intent);
-	        			   	break;
-	        		   case 2:
-	        			   	finish();
-	        			   	break;
-        		   }
-        	   }  
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, strlist);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
+            public void onItemSelected(AdapterView adapterView, View view, int position, long id){
+            }
+            public void onNothingSelected(AdapterView arg0) {
+            }
         });
+        
     }
+    
+    public void onClick(View v) 
+    {
+    	switch (v.getId()) {
+	        case R.id.cal:
+	        	break;
+	        case R.id.exit:
+	        	break;
+	        case R.id.foodchoice:
+	        	break;
+    	}
+    }
+    
     
     private void openOptionsDialog(String info)
 	{

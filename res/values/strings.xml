@@ -6,4 +6,25 @@
 	<color name="white">#FFFFFF</color>    
 	<color name="black">#000000</color>  
 	<color name="darkgray">#A9A9A9</color>  
+	
+	<string-array name="kind">  
+  	<item>五穀根莖類</item>  
+  	<item>奶類</item>  
+  	<item>蛋、豆、魚肉類</item>  
+  	<item>蔬菜類</item>  
+  	<item>水果類</item>  
+  	<item>油脂類</item>  
+  	</string-array> 
+
+	<string-array name="five">  
+  	<item>米</item>  
+  	<item>麵</item>  
+  	<item>雜糧</item>  
+  	<item>全麥</item>  
+  	</string-array> 
+	    	    
+	<string-array name="milk">  
+  	<item>牛奶</item>  
+  	</string-array> 
+	    	    	    	    
 </resources>

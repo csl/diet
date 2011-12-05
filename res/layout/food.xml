@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-android:id="@+id/widget35"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:background="#ffffffff"
-android:orientation="vertical"
-xmlns:android="http://schemas.android.com/apk/res/android"
->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget35"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+
 <TableRow
 android:id="@+id/widget36"
 android:layout_width="fill_parent"
@@ -46,45 +45,73 @@ android:textColor="@color/black"
 <Spinner
 android:id="@+id/foodkind"
 android:layout_width="226px"
-android:layout_height="46px"
+android:layout_height="60px"
 >
 </Spinner>
 </TableRow>
+
 <TableRow
-android:id="@+id/widget44"
-android:layout_width="fill_parent"
-android:layout_height="228px"
-android:orientation="horizontal"
->
-<ListView
-android:id="@+id/listview"
-android:layout_width="fill_parent"
-android:layout_height="228px"
->
-</ListView>
+    android:id="@+id/widget13"
+    android:layout_width="fill_parent"
+    android:layout_height="68px"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+<TextView
+android:id="@+id/wmsg"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="食物"
+android:textSize="20sp"
+android:textColor="@color/black">
+</TextView>
+<Button
+android:id="@+id/foodchoice"
+android:layout_width="150px"
+android:layout_height="65px"
+android:padding="20px"
+android:text="請選擇">
+</Button>
 </TableRow>
+
 <TableRow
-android:id="@+id/widget46"
+    android:id="@+id/widget123"
+    android:layout_width="fill_parent"
+    android:layout_height="68px"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+<TextView
+android:id="@+id/listd"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="list"
+android:textSize="20sp"
+android:textColor="@color/black"
+/>  
+</TableRow>
+    
+<TableRow
+android:id="@+id/wi"
 android:layout_width="320px"
 android:layout_height="93px"
 android:orientation="horizontal"
 >
 <Button
 android:id="@+id/cal"
-android:layout_width="72px"
-android:layout_height="52px"
+android:layout_width="100px"
+android:layout_height="65px"
 android:padding="20px"
 android:text="&#35336;&#31639;"
 >
 </Button>
 <Button
 android:id="@+id/exit"
-android:layout_width="72px"
-android:layout_height="52px"
+android:layout_width="100px"
+android:layout_height="65px"
 android:padding="20px"
 android:text="&#21462;&#28040;"
 android:gravity="center"
 >
 </Button>
-</TableRow>
+</TableRow>  
+
 </LinearLayout>
