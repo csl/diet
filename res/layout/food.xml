@@ -19,7 +19,7 @@ android:layout_width="fill_parent"
 android:layout_height="wrap_content"
 android:background="#ffffccff"
 android:text="&#39135;&#29289;&#25885;&#21462;"
-android:textSize="28sp"
+android:textSize="25sp"
 android:typeface="serif"
 android:textStyle="bold"
 android:textColor="@color/black"
@@ -72,46 +72,56 @@ android:padding="20px"
 android:text="請選擇">
 </Button>
 </TableRow>
-
+
 <TableRow
     android:id="@+id/widget123"
     android:layout_width="fill_parent"
-    android:layout_height="68px"
+    android:layout_height="144dp"
     android:baselineAligned="false"
     android:orientation="horizontal" >
+
+<ScrollView   
+        android:id="@+id/ScrollView01"  
+      android:layout_height="150px"   
+      android:layout_width="fill_parent">  
+
 <TextView
-android:id="@+id/listd"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="list"
-android:textSize="20sp"
-android:textColor="@color/black"
-/>  
+    android:id="@+id/showlist"
+    android:layout_width="fill_parent"
+    android:layout_height="137px"
+    android:text="清單"
+    android:textColor="@color/black"
+    android:textSize="20sp" />
+  
+</ScrollView>
 </TableRow>
-    
+
 <TableRow
-android:id="@+id/wi"
-android:layout_width="320px"
-android:layout_height="93px"
-android:orientation="horizontal"
->
-<Button
-android:id="@+id/cal"
-android:layout_width="100px"
-android:layout_height="65px"
-android:padding="20px"
-android:text="&#35336;&#31639;"
->
-</Button>
-<Button
-android:id="@+id/exit"
-android:layout_width="100px"
-android:layout_height="65px"
-android:padding="20px"
-android:text="&#21462;&#28040;"
-android:gravity="center"
->
-</Button>
-</TableRow>  
+    android:id="@+id/wi"
+    android:layout_width="320px"
+    android:layout_height="93px"
+    android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/cal"
+        android:layout_width="100px"
+        android:layout_height="65px"
+        android:padding="20px"
+        android:text="計算" />
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="100px"
+        android:layout_height="65px"
+        android:gravity="center"
+        android:padding="20px"
+        android:text="清除" />
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="100px"
+        android:layout_height="65px"
+        android:gravity="center"
+        android:padding="20px"
+        android:text="取消" />
+</TableRow>
 
 </LinearLayout>

@@ -96,7 +96,7 @@ public class main extends Activity
 	        			   	break;
 	        		   case 1:
 		       				intent = new Intent();
-		    				intent.setClass(main.this, diet.class);
+		    				intent.setClass(main.this, food.class);
 		    		
 		    				startActivity(intent);
 	        			   	break;
