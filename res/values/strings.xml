@@ -3,7 +3,8 @@
     <string name="hello">Hello World, diet</string>
     <string name="app_name">diet</string>
     <string name="about_me">藉由android智慧型手機當作個人行動平台，記錄個人減重過程及安排保健行程。並架設伺服器當作資料庫之彙整及雲端平台，以提供使用此android裝置之使用者擷取具有參考性質的資料之用。</string>
-	<color name="white">#FFFFFF</color>    
+	<string name="url">http://192.168.12.100:44444//diet/</string>
+    <color name="white">#FFFFFF</color>    
 	<color name="black">#000000</color>  
 	<color name="darkgray">#A9A9A9</color>  
 	

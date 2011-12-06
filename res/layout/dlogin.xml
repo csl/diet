@@ -65,6 +65,7 @@ android:textColor="@color/black"
     android:id="@+id/id"
     android:layout_width="203px"
     android:layout_height="wrap_content"
+    android:text="test"
     android:padding="10px"
     android:textSize="18sp" >
 
@@ -93,6 +94,7 @@ android:textColor="@color/black"
     android:id="@+id/pwd"
     android:layout_width="200px"
     android:layout_height="wrap_content"
+    android:text="12345"
     android:padding="10px"
     android:password="true"
     android:textSize="18sp" />
