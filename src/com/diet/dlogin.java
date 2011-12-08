@@ -69,6 +69,12 @@ public class dlogin extends Activity
         	  account = id.getText().toString();
         	  password = pwd.getText().toString();
         	  	
+				Intent intent = new Intent();
+				intent.setClass(dlogin.this, main.class);
+		
+				startActivity(intent);   
+				
+        	  
         	  //account or password is NULL
               if (account.equals("") || password.equals(""))
               {
@@ -92,6 +98,7 @@ public class dlogin extends Activity
     	        { 
     	          try
     	          { 
+    	        	  
     	        		//Create url
     	                String uriAPI = murl + "login.php?username=" + account + "&pwd=" + password;
     	                
@@ -124,11 +131,12 @@ public class dlogin extends Activity
     	    {
     	        	 try
     	        	  {
-	    	              if (data.getscuess() == 1)
+	    	              if (data.getscuess() != 0)
 	    	              {
 	    	  				Intent intent = new Intent();
 	    	  				intent.setClass(dlogin.this, main.class);
 	    	  		
+	    	            	bmi.bmi = data.getscuess();
 	    	  				startActivity(intent);   
 	    	              }
 	    	              else

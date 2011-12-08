@@ -3,7 +3,7 @@
     <string name="hello">Hello World, diet</string>
     <string name="app_name">diet</string>
     <string name="about_me">藉由android智慧型手機當作個人行動平台，記錄個人減重過程及安排保健行程。並架設伺服器當作資料庫之彙整及雲端平台，以提供使用此android裝置之使用者擷取具有參考性質的資料之用。</string>
-	<string name="url">http://192.168.12.100:44444//diet/</string>
+	<string name="url">http://192.168.12.100:44444/diet/</string>
     <color name="white">#FFFFFF</color>    
 	<color name="black">#000000</color>  
 	<color name="darkgray">#A9A9A9</color>  
@@ -16,14 +16,181 @@
   	<item>水果類</item>  
   	<item>油脂類</item>  
   	</string-array> 
+  	
+	    
+	<string-array name="kind_sport">  
+  	<item>家務</item>  
+  	<item>玩樂</item>  
+  	<item>運動</item>  
+  	<item>其他</item>  
+  	</string-array> 
+	    
+	<string-array name="home_sport">  
+  	<item>車衣</item>  
+  	<item>鋸木</item>  
+  	<item>劈柴</item>  
+  	<item>園藝</item>  
+  	<item>搬傢具</item>  
+  	<item>油牆</item>  
+  	<item>拖地</item>  
+  	<item>疊被</item>  
+  	<item>剪草</item>  
+  	<item>洗車</item>  
+  	<item>打掃</item>  
+  	<item>擦窗</item>  
+  	<item>吸塵</item>  
+  	<item>煮飯</item>  
+  	<item>洗碗</item>  
+  	<item>燙衣服</item>  
+  	<item>插花</item>  
+  	<item>洗衣服</item>  
+  	</string-array> 
 
+	<string-array name="play_sport">  
+  	<item>遛狗</item>  
+  	<item>郊遊</item>  
+  	<item>打Game</item>  
+  	<item>逛街</item>  
+  	<item>唱卡啦OK</item>  
+  	<item>看TV or 電影</item>  
+  	<item>Shopping</item>  
+  	</string-array> 
+	    
+	<string-array name="sport">  
+  	<item>划艇器械</item>  
+  	<item>Spinning(地獄單車)</item>  
+  	<item>壁球</item>  
+  	<item>柔道</item>  
+  	<item>劍擊</item>  
+  	<item>游泳</item>  
+  	<item>打拳</item>  
+  	<item>跳繩</item>
+  	<item>仰臥起坐</item>  
+  	<item>足球</item>  
+  	<item>藍球</item>  
+  	<item>健身舞</item>  
+  	<item>滑雪</item>  
+  	<item>打網球</item> 
+  	<item>跑步</item>  
+  	<item>舉重</item>  
+  	<item>爬山</item>  
+  	<item>踏步器(約1050步)</item>  
+  	<item>爬樓梯</item>  
+  	<item>騎馬</item> 
+  	<item>羽毛球</item>  
+  	<item>桌球</item>  
+  	<item>有氧運動</item>  
+  	<item>乒乓球</item>  
+  	<item>快步走</item>  
+  	<item>慢跑</item>  
+  	<item>跳舞</item>  
+  	<item>普通單車</item>  
+  	<item>排球</item>  
+  	<item>保齡球</item>  
+  	<item>快步走</item>  
+  	<item>散步</item>  
+  	<item>打高爾夫球</item>    	 	  	  	  
+  	</string-array> 
+  		    
+	<string-array name="other_sport">  
+  	<item>洗澡</item>  
+  	<item>搭車坐著</item>  
+  	<item>唸書</item>  
+  	<item>穿衣服</item>  
+  	<item>開車</item>  
+  	<item>工作</item>  
+  	<item>講電話</item>  
+  	<item>搭車站著</item>  
+  	<item>睡覺</item>    
+  	</string-array> 	    
+    	    
+	<string-array name="khome_sport">  
+  	<item>190</item>  
+  	<item>185</item>  
+  	<item>179</item>  
+  	<item>173</item>  
+  	<item>160</item>  
+  	<item>137</item>  
+  	<item>133</item>  
+  	<item>130</item>  
+  	<item>130</item>  
+  	<item>120</item>  
+  	<item>114</item>  
+  	<item>93</item>  
+  	<item>70</item>  
+  	<item>69</item>  
+  	<item>68</item>  
+  	<item>60</item>  
+  	<item>57</item>  
+  	<item>57</item>  
+	</string-array> 
+	   
+	<string-array name="hplay_sport">  
+  	<item>130</item>  
+  	<item>120</item>  
+  	<item>112</item>  
+  	<item>55</item>  
+  	<item>40</item>  
+  	<item>36</item>  
+  	<item>90</item>  
+  	</string-array> 
+	    	    
+	<string-array name="hsport">  
+  	<item>420</item>  
+  	<item>400</item>  
+  	<item>360</item>  
+  	<item>300</item>  
+  	<item>300</item>  
+  	<item>273</item>  
+  	<item>225</item>  
+  	<item>224</item>
+  	<item>216</item>  
+  	<item>210</item>  
+  	<item>200</item>  
+  	<item>190</item>  
+  	<item>177</item>  
+  	<item>176</item> 
+  	<item>165</item>  
+  	<item>150</item>  
+  	<item>150</item>  
+  	<item>141</item>  
+  	<item>138</item>  
+  	<item>135</item>  
+  	<item>135</item> 
+  	<item>126</item>  
+  	<item>120</item>  
+  	<item>114</item>  
+  	<item>112</item>  
+  	<item>102</item>  
+  	<item>92</item>  
+  	<item>90</item>  
+  	<item>90</item>  
+  	<item>66</item>  
+  	<item>43</item>  
+  	</string-array> 
+  	
+	<string-array name="hother_sport">  
+  	<item>84</item>  
+  	<item>53</item>  
+  	<item>44</item>  
+  	<item>41</item>  
+  	<item>41</item>  
+  	<item>38</item>  
+  	<item>33</item>  
+  	<item>33</item>  
+  	<item>24</item>    
+  	</string-array> 	    
+	    	    
+	    
+	    	    
 	<string-array name="five">  
   	<item>米</item>  
   	<item>麵</item>  
   	<item>雜糧</item>  
   	<item>全麥</item>  
   	</string-array> 
-  	
+	    	    
+	    	
 	<string-array name="hfive">  
   	<item>34</item>  
   	<item>22</item>  

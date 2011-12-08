@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 public class food extends Activity implements OnClickListener
 {
-    public ArrayList<String> listarray = new ArrayList<String>();
+    public static ArrayList<String> listarray = new ArrayList<String>();
 	public int kind_id = -1;
 	public String five[], hfive[], milk[];
 	public String msg [] = null;
@@ -35,7 +35,7 @@ public class food extends Activity implements OnClickListener
 	private TextView showlist;
 	private TextView cb[];
 	private EditText et[]; 
-    public  int hot = 0;
+    public static int hot = 0;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -51,11 +51,12 @@ public class food extends Activity implements OnClickListener
         
         Button A = (Button)findViewById(R.id.cal);
         A.setOnClickListener(this);
-        Button B = (Button)findViewById(R.id.exit);
+        Button B = (Button)findViewById(R.id.clear);
         B.setOnClickListener(this);
-        Button C = (Button)findViewById(R.id.foodchoice);
+        Button C = (Button)findViewById(R.id.exit);
         C.setOnClickListener(this);
-        
+        Button D = (Button)findViewById(R.id.foodchoice);
+        D.setOnClickListener(this);        
         Spinner spinner = (Spinner) findViewById(R.id.foodkind);
  
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -87,7 +88,7 @@ public class food extends Activity implements OnClickListener
 	        case R.id.clear:
 	        	listarray.clear();
 	        	showlist.setText("");
-	        	showlist.refreshDrawableState();
+	        	hot = 0;
 	        	break;
 	        case R.id.exit:
 	        	break;
@@ -155,14 +156,7 @@ public class food extends Activity implements OnClickListener
 	        	        		
 	        	        		hot += total;
 	        		        	
-	        		        	
-	        		        	//show
-	        		        	String listv = "";
-	        		        	for (int j=0; j<listarray.size(); j++)
-	        		        	{
-	        		        			listv = listv + listarray.get(j) + "\n"; 
-	        		        	}
-	        		        	showlist.setText(listv);
+	        		        	showlist.setText(showlist());
 	        		        }
 	        		});
 	        		
@@ -173,6 +167,20 @@ public class food extends Activity implements OnClickListener
     	}
     }
     
+    
+    public static String showlist()
+    {
+    	
+    	//show
+    	String listv = "";
+    	for (int j=0; j<listarray.size(); j++)
+    	{
+    			listv = listv + listarray.get(j) + "\n"; 
+    	}
+    	
+    	return listv;
+   	
+    }
     
     private void select(int kind_id2) {
 		// TODO Auto-generated method stub

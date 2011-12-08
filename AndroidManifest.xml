@@ -17,6 +17,7 @@
         <activity android:label="@string/app_name" android:name="food"></activity>
         <activity android:label="@string/app_name" android:name="bmi"></activity>
         <activity android:label="@string/app_name" android:name="main"></activity>
+        <activity android:label="@string/app_name" android:name="sport"></activity>
             
     </application>
     

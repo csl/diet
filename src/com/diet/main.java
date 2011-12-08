@@ -1,7 +1,21 @@
 package com.diet;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,6 +23,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -22,6 +37,15 @@ public class main extends Activity
     
     public ProgressDialog myDialog = null;
 	private ArrayList<HashMap<String, Object>> menu;
+    private CheckXMLStruct data;
+    private int result_check;
+	
+    private String murl = "";
+	
+    private int year, month, day;
+
+    final Calendar c = Calendar.getInstance();
+    
     
     /** Called when the activity is first created. */
     @Override
@@ -29,6 +53,11 @@ public class main extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+          
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH) + 1;
+        day = c.get(Calendar.DAY_OF_MONTH);          
         
         listview = (ListView)findViewById(R.id.listview);
         
@@ -57,11 +86,6 @@ public class main extends Activity
 		map = new HashMap<String, Object>();
 		map.put("ItemTitle", "輸入日期紀錄" );
 		map.put("ItemText", "input data/record");
-		menu.add(map);
-		
-		map = new HashMap<String, Object>();
-		map.put("ItemTitle", "行事曆&備忘錄" );
-		map.put("ItemText", "");
 		menu.add(map);
 
 		map = new HashMap<String, Object>();
@@ -102,28 +126,19 @@ public class main extends Activity
 	        			   	break;
 	        		   case 2:
 		       				intent = new Intent();
-		    				intent.setClass(main.this, food.class);
+		    				intent.setClass(main.this, sport.class);
 		    		
 		    				startActivity(intent);
 	        			   	break;
 	        		   case 3:
-		       				intent = new Intent();
-		    				intent.setClass(main.this, diet.class);
-		    		
-		    				startActivity(intent);
+
 	        			   	break;
 	        		   case 4:
-		       				intent = new Intent();
-		    				intent.setClass(main.this, diet.class);
-		    		
-		    				startActivity(intent);
+	        			   check_upload();
 	        			   	break;
 	        		   case 5:
-		       				intent = new Intent();
-		    				intent.setClass(main.this, diet.class);
-		    		
-		    				startActivity(intent);
-	        			   	break;
+	        			   finish();
+	        			   break;
 	        		   case 6:
 	        			    finish();
 	        			   	break;
@@ -131,6 +146,130 @@ public class main extends Activity
         	   }  
         });
     }
+    
+    public void check_upload()
+    {
+    	
+    	result_check = 0;
+    	
+         murl = (String) this.getResources().getText(R.string.url);
+
+	      //Progress
+	      myDialog = ProgressDialog.show
+	                 (
+	                   main.this,
+	                   "檢查 和 上載中",
+	                   "...", 
+	                   true
+	                 );
+	      
+	      new Thread()
+	      { 
+	        public void run()
+	        { 
+	          try
+	          { 
+	        	  
+	        		//Create url
+	                String uriAPI = murl + "check_date.php?today=" + year + "/" + month + "/" + day;
+	                
+	                URL url = null;
+	                try{
+		                url = new URL(uriAPI);
+		                
+		                SAXParserFactory spf = SAXParserFactory.newInstance();
+		                SAXParser sp = spf.newSAXParser();
+		                XMLReader xr = sp.getXMLReader();
+		                //Using check handler for xml
+		                CheckXMLHandler myHandler = new CheckXMLHandler();
+		                xr.setContentHandler(myHandler);
+		                //open connection
+		                xr.parse(new InputSource(url.openStream()));
+		        		//verify OK
+		      	        data = myHandler.getParsedData();
+	                }
+	                catch(Exception e){
+	     	            e.printStackTrace();
+	     	           myDialog.dismiss();
+	    	            return;
+	                }
+	                
+	      }
+	      catch (Exception e)
+	      {
+	            e.printStackTrace();
+	            myDialog.dismiss();
+	      }
+	      finally
+	      {
+	        	 try
+	        	 {
+	  	              if (data.getscuess() == 1)
+	  	              {
+	  	            	//update
+		  				toweb(murl + "update.php?date=" + year + "/" + month + "/" + day + "&bmi=" + bmi.bmi +
+									   "&addhot="  + food.hot + "&losehot=" + sport.hot + "&addmenu=" + food.showlist() + "&losemenu=" + sport.showlist()); 
+		              }
+	  	              else
+	  	              {
+	  	            	//insert
+	  					toweb(murl + "insert.php?date=" + year + "/" + month + "/" + day + "&bmi=" + bmi.bmi +
+								   "&addhot="  + food.hot + "&losehot=" + sport.hot + "&addmenu=" + food.showlist() + "&losemenu=" + sport.showlist()); 
+	  	              }
+		         }
+		         catch (Exception err)
+		         {
+		    	     err.printStackTrace();
+		         }
+		        	  
+		         myDialog.dismiss();
+	      }      	          
+	   }
+	 }.start();        		
+
+   }
+    
+    
+	public int toweb(String uriAPI)
+	{
+		int error = 0;
+       HttpGet httpRequest = new HttpGet(uriAPI);
+         
+       try
+        {
+            HttpResponse httpResponse = new DefaultHttpClient().execute(httpRequest);
+            if(httpResponse.getStatusLine().getStatusCode() == 200)
+            {
+            	String strResult = EntityUtils.toString(httpResponse.getEntity());
+            }
+            else
+            {
+              //mTextView1.setText("Error Response: "+httpResponse.getStatusLine().toString());
+            }
+          }
+          catch (ClientProtocolException e)
+          {
+            //mTextView1.setText(e.getMessage().toString());
+            e.printStackTrace();
+            error = 1;
+          }
+          catch (IOException e)
+          {
+            //mTextView1.setText(e.getMessage().toString());
+            e.printStackTrace();
+            error = 1;
+          }
+          catch (Exception e)
+          {
+            //mTextView1.setText(e.getMessage().toString());
+            e.printStackTrace();
+            error = 1;
+          }
+
+         return error;
+	}    
+    
+    
     
     private void openOptionsDialog(String info)
 	{

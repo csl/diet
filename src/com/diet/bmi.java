@@ -43,6 +43,8 @@ public class bmi extends Activity implements OnClickListener
         Button A = (Button)findViewById(R.id.calBMI);
         A.setOnClickListener(this);
         
+        result.setText("您現在BMI: " + bmi);
+        
         Toast popup =  Toast.makeText(bmi.this, "請按上鍵頭跳出", Toast.LENGTH_SHORT);
         popup.show();
  
