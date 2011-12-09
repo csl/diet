@@ -25,34 +25,33 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class food extends Activity implements OnClickListener
+public class sport extends Activity implements OnClickListener
 {
     public static ArrayList<String> listarray = new ArrayList<String>();
 	public int kind_id = -1;
-	public String five[], hfive[], ebfish[], hebfish[], fruit[], hfruit[], veg[], hveg[], oil[], hoil[];
+	public String home_sport[], khome_sport[], play_sport[],hplay_sport[], sport[], hsport[], other_sport[], hother_sport[];
 	public String msg [] = null;
 	public String hmsg[] = null;
 	private TextView showlist;
-	private TextView cb[];
 	private EditText et[]; 
-    public static int hot = 0;
+	private Spinner sr[]; 
+    public static double hot = 0;
+    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.food);
+        setContentView(R.layout.sport);
         
-        five = this.getResources().getStringArray(R.array.five);
-        hfive = this.getResources().getStringArray(R.array.hfive);
-        ebfish = this.getResources().getStringArray(R.array.ebfish);
-        hebfish = this.getResources().getStringArray(R.array.hebfish);
-        fruit = this.getResources().getStringArray(R.array.fruit);
-        hfruit = this.getResources().getStringArray(R.array.hfruit);
-        veg = this.getResources().getStringArray(R.array.veg);
-        hveg = this.getResources().getStringArray(R.array.hveg);
-        oil = this.getResources().getStringArray(R.array.oil);
-        hoil = this.getResources().getStringArray(R.array.hoil);
+        home_sport = this.getResources().getStringArray(R.array.home_sport);
+        khome_sport = this.getResources().getStringArray(R.array.khome_sport);
+        play_sport = this.getResources().getStringArray(R.array.play_sport);
+        hplay_sport = this.getResources().getStringArray(R.array.hplay_sport);
+        sport = this.getResources().getStringArray(R.array.sport);
+        hsport = this.getResources().getStringArray(R.array.hsport);
+        other_sport = this.getResources().getStringArray(R.array.other_sport);
+        hother_sport = this.getResources().getStringArray(R.array.hother_sport);
         
         showlist = (TextView)findViewById(R.id.showlist);
         
@@ -62,12 +61,13 @@ public class food extends Activity implements OnClickListener
         B.setOnClickListener(this);
         Button C = (Button)findViewById(R.id.exit);
         C.setOnClickListener(this);
-        Button D = (Button)findViewById(R.id.foodchoice);
-        D.setOnClickListener(this);        
+        Button D = (Button)findViewById(R.id.schoice);
+        D.setOnClickListener(this);
+        
         Spinner spinner = (Spinner) findViewById(R.id.foodkind);
  
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-				R.array.kind,
+				R.array.kind_sport,
 				android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -81,69 +81,99 @@ public class food extends Activity implements OnClickListener
             }
         });
         
+        showlist.setText(showlist());
+        
     }
     
     public void onClick(View v) 
     {
     	switch (v.getId()) {
 	        case R.id.cal:
-	        	String listv = showlist.getText().toString();
+	        	//String listv = showlist.getText().toString();
 	        	
-	        	openOptionsDialog("總熱量 ＝ " + hot + "卡");
+	        	openOptionsDialog("消耗 總熱量 ＝ " + hot + "卡");
 
 	        	break;
 	        case R.id.clear:
+	        	openOptionsDialog("clear all");
 	        	listarray.clear();
 	        	showlist.setText("");
-	        	hot = 0;
+	        	hot=0;
 	        	break;
 	        case R.id.exit:
 	        	finish();
 	        	break;
-	        case R.id.foodchoice:
+	        case R.id.schoice:
 	        	if (kind_id != -1)
 	        	{
 	        		switch  (kind_id)
 	        		{
 	        			case 0:
-	        				msg = five;
-	        				hmsg = hfive;
+	        				msg = home_sport;
+	        				hmsg = khome_sport;
 	        				break;
 	        			case 1:
-	        				msg = ebfish;
-	        				hmsg = hebfish;
+	        				msg = play_sport;
+	        				hmsg = hplay_sport;
 	        				break;
 	        			case 2:
-	        				msg = fruit;
-	        				hmsg = hfruit;
-	        				break;
+	        				msg = sport;
+	        				hmsg = hsport;
+	        				break;	        			
 	        			case 3:
-	        				msg = veg;
-	        				hmsg = hveg;
-	        				break;
-	        			case 4:
-	        				msg = oil;
-	        				hmsg = hoil;
+	        				msg = other_sport;
+	        				hmsg = hother_sport;
 	        				break;
 	        		}
-	        		
-	        		if (msg == null)  return;
-	        		
 	        		
 	        		ScrollView sv = new ScrollView(this);
 	        		LinearLayout ll = new LinearLayout(this);
 	        		ll.setOrientation(LinearLayout.VERTICAL);
 	        		sv.addView(ll);
-	        			       
-	        		cb = new TextView[msg.length];
+	        		
+        			TextView tv = new TextView(this);
+        			tv.setText("[時間選擇 unit,30分鐘]");
+        			ll.addView(tv);	       
+        			
 	        		et = new EditText[msg.length];
-	        		for(int i = 0; i < msg.length; i++) {
-	        			cb[i] = new TextView(this);
-	        			cb[i].setText(msg[i].toString());
-	        			ll.addView(cb[i]);
+	        		sr = new Spinner[msg.length]; 
+	        		for(int i = 0; i < 3; i++) 
+	        		{
 	        			et[i] = new EditText(this);
 	        			et[i].setText("0");
 	        			ll.addView(et[i]);	        			
+	        			sr[i] = new Spinner(this);
+	        			
+	        			ArrayAdapter<CharSequence> adapter = null;
+	        			
+		        		switch  (kind_id)
+		        		{
+		        			case 0:
+		        				adapter = ArrayAdapter.createFromResource(this,
+		        						R.array.home_sport,
+		        						android.R.layout.simple_spinner_item);
+		        				break;
+		        			case 1:
+		        				adapter = ArrayAdapter.createFromResource(this,
+		        						R.array.play_sport,
+		        						android.R.layout.simple_spinner_item);
+		        				break;
+		        			case 2:
+		        				adapter = ArrayAdapter.createFromResource(this,
+		        						R.array.sport,
+		        						android.R.layout.simple_spinner_item);
+		        				break;	        			
+		        			case 3:
+		        				adapter = ArrayAdapter.createFromResource(this,
+		        						R.array.other_sport,
+		        						android.R.layout.simple_spinner_item);
+		        				break;
+		        		}	        			
+	        			
+	        		    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+	        		    sr[i].setAdapter(adapter);	
+	        		   
+	        			ll.addView(sr[i]);	        			
 	        		}	        		
 	        		
 	        		
@@ -155,16 +185,20 @@ public class food extends Activity implements OnClickListener
 	        		        new DialogInterface.OnClickListener() {
 	        		        public void onClick(DialogInterface dialog, int which) 
 	        		        {
-	        		        	int total = 0;
-	        	        		for(int i = 0; i < msg.length; i++) {
+	        		        	showlist.setText("");
+	        		        	double total = 0;
+	        	        		for(int i = 0; i < 3; i++) 
+	        	        		{
 	        	        			
-	        	        			if (et[i].getText().toString().equals("0") || et[i].getText().toString().equals("")) continue;
+	        	        			if (et[i].getText().toString().equals("0")) continue;
 	        	        			
-		        	        			listarray.add(msg[i] + "(" + hmsg[i] + ")");
+	        	        				int index = sr[i].getSelectedItemPosition();
+
+	        	        				listarray.add(et[i].getText().toString() + "分鐘, " + sr[i].getSelectedItem().toString() + " (" + hmsg[index] + ")");
 		        	        			
 		        	        			try
 		        	        			{
-		        	        			  total = total + Integer.parseInt(et[i].getText().toString()) * Integer.parseInt(hmsg[i]);
+		        	        			  total = total + (double) (Double.parseDouble(et[i].getText().toString())/30) * Integer.parseInt(hmsg[index]);
 		        	        		
 		        	        			}
 		        	        			catch (Exception x)
@@ -174,8 +208,8 @@ public class food extends Activity implements OnClickListener
 	        	        		}
 	        	        		
 	        	        		hot += total;
-
-	        	        		String listv = "";
+	        	        		 
+	        	        	   	String listv = "";
 	        	            	for (int j=0; j<listarray.size(); j++)
 	        	            	{
 	        	            			listv = listv + listarray.get(j) + "\n"; 
@@ -193,29 +227,27 @@ public class food extends Activity implements OnClickListener
     }
     
     
-    public static String showlist()
-    {
-    	
-    	//show
-    	String listv = "";
-    	for (int j=0; j<listarray.size(); j++)
-    	{
-    			listv = listv + listarray.get(j) + "\n"; 
-    	}
-    	
-    	return listv;
-   	
-    }
-    
     private void select(int kind_id2) {
 		// TODO Auto-generated method stub
 		
 	}
+    
+    public static String showlist()
+    {
+    	//show
+    	String listv = "";
+    	for (int j=0; j<listarray.size(); j++)
+    	{
+    			listv = listv + listarray.get(j) + ","; 
+    	}
+    	
+    	return listv;
+    }
 
 	private void openOptionsDialog(String info)
 	{
 	    new AlertDialog.Builder(this)
-	    .setTitle("about me")
+	    .setTitle("訊息")
 	    .setMessage(info)
 	    .setPositiveButton("OK",
 	        new DialogInterface.OnClickListener()

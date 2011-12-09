@@ -3,21 +3,145 @@
     <string name="hello">Hello World, diet</string>
     <string name="app_name">diet</string>
     <string name="about_me">藉由android智慧型手機當作個人行動平台，記錄個人減重過程及安排保健行程。並架設伺服器當作資料庫之彙整及雲端平台，以提供使用此android裝置之使用者擷取具有參考性質的資料之用。</string>
-	<string name="url">http://192.168.12.100:44444/diet/</string>
+	<string name="url">http://140.116.39.127:44444/diet/</string>
     <color name="white">#FFFFFF</color>    
 	<color name="black">#000000</color>  
 	<color name="darkgray">#A9A9A9</color>  
 	
 	<string-array name="kind">  
   	<item>五穀根莖類</item>  
-  	<item>奶類</item>  
-  	<item>蛋、豆、魚肉類</item>  
-  	<item>蔬菜類</item>  
+  	<item>奶蛋、豆、魚肉類</item>  
   	<item>水果類</item>  
+  	<item>蔬菜類</item>  
   	<item>油脂類</item>  
   	</string-array> 
   	
-	    
+	<string-array name="five">  
+  	<item>白飯一碗(單位:200g)</item>  
+  	<item>麵條(單位:200g)</item>  
+  	<item>紅豆(單位:200g)</item>  
+  	<item>玉米(單位:200g)</item>  
+  	<item>竽頭(單位:200g)</item>  
+  	<item>蕃頭(單位:200g)</item>  
+  	<item>馬鈴薯(單位:200g)</item>  
+  	</string-array> 
+
+	<string-array name="hfive">  
+  	<item>316</item>  
+  	<item>262</item>  
+  	<item>620</item>  
+  	<item>268</item>  
+  	<item>220</item>  
+  	<item>212</item>  
+  	<item>160</item>  
+  	</string-array> 	    	    
+	   	    	    
+	<string-array name="ebfish">  
+  	<item>豬肉(單位:60g)</item>  
+  	<item>牛肉(單位:60g)</item>  
+  	<item>雞肉(單位:60g)</item>  
+  	<item>魚肉(單位:60g)</item>  
+  	<item>海鮮類(單位:60g)</item>  
+  	<item>全脂奶粉(單位:60g)</item>  
+  	<item>雞蛋(單位:1個)</item>  
+  	<item>豆腐(單位:60g)</item>  
+  	</string-array>
+  	
+	<string-array name="hebfish">  
+  	<item>208</item>  
+  	<item>80</item>  
+  	<item>68</item>  
+  	<item>65</item>  
+  	<item>60</item>  
+  	<item>320</item>  
+  	<item>86</item>  
+  	<item>40</item>  
+ 	</string-array> 	    
+  	
+	<string-array name="fruit">  
+  	<item>香蕉(單位:100g)</item>  
+  	<item>芒果(單位:100g)</item>  
+  	<item>葡萄(單位:100g)</item>  
+  	<item>蕃石榴(單位:100g)</item>  
+  	<item>蘋果(單位:100g)</item>  
+  	<item>鳳梨(單位:100g)</item>  
+  	<item>柳丁(單位:100g)</item>  
+  	<item>木瓜(單位:100g)</item>  
+  	<item>蓮霧(單位:100g)</item>  
+  	<item>西瓜(單位:100g)</item>  
+  	<item>蕃茄(單位:100g)</item>  
+  	</string-array>	    
+	        
+	<string-array name="hfruit">  
+  	<item>80</item>  
+  	<item>64</item>  
+  	<item>50</item>  
+  	<item>48</item>  
+  	<item>39</item>  
+  	<item>35</item>  
+  	<item>35</item>  
+  	<item>28</item>  
+  	<item>25</item>  
+  	<item>50</item>  
+  	<item>18</item>  
+  	</string-array> 
+
+	<string-array name="veg">  
+  	<item>青菜類(單位:100g)</item>  
+  	<item>碗豆仁(單位:100g)</item>  
+  	<item>黄豆芽(單位:100g)</item>  
+  	<item>四季豆(單位:100g)</item>  
+  	<item>胡蘿蔔(單位:100g)</item>  
+  	<item>蘿蔔(單位:100g)</item>  
+  	<item>洋蔥(單位:100g)</item>  
+  	<item>青椒(單位:100g)</item>  
+  	<item>茄子(單位:100g)</item>  
+  	<item>蘆筍(單位:100g)</item>  
+  	<item>竹筍(單位:100g)</item>  
+  	<item>菜花(單位:100g)</item>  
+  	<item>小黄瓜(單位:100g)</item>  
+  	<item>小白菜(單位:100g)</item>  
+  	<item>海帶(單位:100g)</item>  
+  	</string-array>	    	    	    	    	    
+	    	    
+	<string-array name="hveg">  
+  	<item>20</item>  
+  	<item>94</item>  
+  	<item>45</item>  
+  	<item>28</item>  
+  	<item>37</item>  
+  	<item>25</item>  
+  	<item>38</item>  
+  	<item>26</item>  
+  	<item>18</item>  
+  	<item>21</item>  
+  	<item>20</item>  
+  	<item>20</item>  
+  	<item>12</item>  
+  	<item>10</item>  
+  	<item>36</item>  
+  	</string-array>		
+  	
+	<string-array name="oil">  
+  	<item>豬油1匙(單位:15g)</item>  
+  	<item>大豆油(單位:15g)</item>  
+  	<item>花生27粒(單位:15g)</item>  
+  	<item>沙拉醫(單位:15g)</item>  
+  	<item>沙茶醫(單位:15g)</item>  
+  	<item>砂糖(單位:15g)</item>  
+  	<item>醫油(單位:15g)</item>  
+  	</string-array>		    
+
+	<string-array name="hoil">  
+  	<item>135</item>  
+  	<item>132</item>  
+  	<item>85</item>  
+  	<item>160</item>  
+  	<item>100</item>  
+  	<item>58</item>  
+  	<item>7</item>  
+  	</string-array>		    
+	    	    
 	<string-array name="kind_sport">  
   	<item>家務</item>  
   	<item>玩樂</item>  
@@ -180,31 +304,5 @@
   	<item>33</item>  
   	<item>24</item>    
   	</string-array> 	    
-	    	    
-	    
-	    	    
-	<string-array name="five">  
-  	<item>米</item>  
-  	<item>麵</item>  
-  	<item>雜糧</item>  
-  	<item>全麥</item>  
-  	</string-array> 
-	    	    
 	    	
-	<string-array name="hfive">  
-  	<item>34</item>  
-  	<item>22</item>  
-  	<item>1</item>  
-  	<item>23</item>  
-  	</string-array> 	    
-	    	    
-	<string-array name="milk">  
-  	<item>牛奶</item>  
-  	<item>牛奶</item>  
-  	<item>牛奶</item>  
-  	<item>牛奶</item>  
-  	<item>牛奶</item>  
-  	<item>牛奶</item>  
-	</string-array> 
-	    	    	    	    
 </resources>

@@ -2,13 +2,13 @@ package com.diet;
 
 public class LoginXMLStruct 
 {
-	  private int h_scuess = 0;
+	  private double h_scuess = 0;
 	  
-	  public int getscuess()
+	  public double getscuess()
 	  {
 	          return h_scuess;
 	  }
-	  public void setscuess(int id)
+	  public void setscuess(double id)
 	  {
 	          this.h_scuess = id;
 	  }

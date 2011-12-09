@@ -1,7 +1,9 @@
 package com.diet;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -41,10 +43,13 @@ public class main extends Activity
     private int result_check;
 	
     private String murl = "";
+    public static String account;
 	
     private int year, month, day;
 
     final Calendar c = Calendar.getInstance();
+    
+   	String url_list;
     
     
     /** Called when the activity is first created. */
@@ -54,6 +59,10 @@ public class main extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        Bundle bData = this.getIntent().getExtras();
+        
+        // 取得 Bundle 中的資料
+        account = bData.getString("account");
           
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH) + 1;
@@ -149,29 +158,16 @@ public class main extends Activity
     
     public void check_upload()
     {
-    	
     	result_check = 0;
     	
          murl = (String) this.getResources().getText(R.string.url);
 
-	      //Progress
-	      myDialog = ProgressDialog.show
-	                 (
-	                   main.this,
-	                   "檢查 和 上載中",
-	                   "...", 
-	                   true
-	                 );
-	      
-	      new Thread()
-	      { 
-	        public void run()
-	        { 
+
 	          try
 	          { 
 	        	  
 	        		//Create url
-	                String uriAPI = murl + "check_date.php?today=" + year + "/" + month + "/" + day;
+	                String uriAPI = murl + "check_date.php?today=" + year + "/" + month + "/" + day + "&username=" + account;
 	                
 	                URL url = null;
 	                try{
@@ -206,26 +202,56 @@ public class main extends Activity
 	        	 {
 	  	              if (data.getscuess() == 1)
 	  	              {
-	  	            	//update
-		  				toweb(murl + "update.php?date=" + year + "/" + month + "/" + day + "&bmi=" + bmi.bmi +
-									   "&addhot="  + food.hot + "&losehot=" + sport.hot + "&addmenu=" + food.showlist() + "&losemenu=" + sport.showlist()); 
+	  	            	  
+
+	  	            	    new AlertDialog.Builder(this)
+	  	            	      .setTitle("問題")
+	  	            	      .setMessage("今天已上傳， 是否要重新上傳")
+	  	            	      .setNegativeButton("NO",
+	  	            	          new DialogInterface.OnClickListener() {
+	  	            	          
+	  	            	            public void onClick(DialogInterface dialoginterface, int i) {
+	  	            	              
+	  	            	            }
+	  	            	      }
+	  	            	      )
+	  	            	   
+	  	            	      .setPositiveButton("YES",
+	  	            	          new DialogInterface.OnClickListener() {
+	  	            	          public void onClick(DialogInterface dialoginterface, int i) {
+	  	            	            
+	  	            	        	url_list = murl + "insert.php?date=" + year + "/" + month + "/" + day + "&bmi=" + bmi.bmi + "&update=1&username=" + account +
+	  	    								   "&addhot="  + food.hot + "&losehot=" + sport.hot /*+ "&addmenu=\"" + food.showlist() + 
+	  	    								   "\"&losemenu=\"" + sport.showlist() + "\""*/;
+	  	            	       
+	  	    	  	            	//insert
+	  	    	  					toweb(url_list); 
+	  	            	            
+	  	    	  					openOptionsDialog("上傳成功");
+
+	  	            	          }
+	  	            	          
+	  	            	      }
+	  	            	      )
+	  	            	      .show();
 		              }
 	  	              else
 	  	              {
+            	        url_list = murl + "insert.php?date=" + year + "/" + month + "/" + day + "&bmi=" + bmi.bmi + "&username=" + account +
+								   "&addhot="  + food.hot + "&losehot=" + sport.hot /*+ "&addmenu=\"" + food.showlist() + "\"&losemenu=\"" + sport.showlist() + "\""*/;
+          	        	
 	  	            	//insert
-	  					toweb(murl + "insert.php?date=" + year + "/" + month + "/" + day + "&bmi=" + bmi.bmi +
-								   "&addhot="  + food.hot + "&losehot=" + sport.hot + "&addmenu=" + food.showlist() + "&losemenu=" + sport.showlist()); 
+	  					toweb(url_list); 
+	  					openOptionsDialog("上傳成功");
 	  	              }
+	  					
 		         }
 		         catch (Exception err)
 		         {
 		    	     err.printStackTrace();
 		         }
+	      }
 		        	  
-		         myDialog.dismiss();
-	      }      	          
-	   }
-	 }.start();        		
 
    }
     
@@ -268,13 +294,12 @@ public class main extends Activity
 
          return error;
 	}    
-    
-    
+	
     
     private void openOptionsDialog(String info)
 	{
 	    new AlertDialog.Builder(this)
-	    .setTitle("about me")
+	    .setTitle("msg")
 	    .setMessage(info)
 	    .setPositiveButton("OK",
 	        new DialogInterface.OnClickListener()

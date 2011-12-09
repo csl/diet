@@ -69,12 +69,6 @@ public class dlogin extends Activity
         	  account = id.getText().toString();
         	  password = pwd.getText().toString();
         	  	
-				Intent intent = new Intent();
-				intent.setClass(dlogin.this, main.class);
-		
-				startActivity(intent);   
-				
-        	  
         	  //account or password is NULL
               if (account.equals("") || password.equals(""))
               {
@@ -82,7 +76,7 @@ public class dlogin extends Activity
                   
                   return;
               }
-    	      
+    	                   
     	      //Progress
     	      myDialog = ProgressDialog.show
     	                 (
@@ -131,12 +125,15 @@ public class dlogin extends Activity
     	    {
     	        	 try
     	        	  {
-	    	              if (data.getscuess() != 0)
+	    	              if (data.getscuess() != -1)
 	    	              {
+	    	            	
 	    	  				Intent intent = new Intent();
 	    	  				intent.setClass(dlogin.this, main.class);
-	    	  		
+	    	  	            Bundle bData = new Bundle();
+	    	  	            bData.putString("account", account);
 	    	            	bmi.bmi = data.getscuess();
+	    	            	intent.putExtras( bData );
 	    	  				startActivity(intent);   
 	    	              }
 	    	              else

@@ -4,21 +4,21 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class LoginXMLHandler extends DefaultHandler
+public class CheckXMLHandler extends DefaultHandler
 {
 	  private boolean h_id = false;
 	  private boolean h_scuess = false;
 	  
-	  private LoginXMLStruct myParsedExampleDataSet = new LoginXMLStruct();
+	  private CheckXMLStruct myParsedExampleDataSet = new CheckXMLStruct();
 	  
-	  public LoginXMLStruct getParsedData() 
+	  public CheckXMLStruct getParsedData() 
 	  {
 	       return this.myParsedExampleDataSet;
 	  }
 	  
 	  public void startDocument() throws SAXException 
 	  {
-	       this.myParsedExampleDataSet = new LoginXMLStruct();
+	       this.myParsedExampleDataSet = new CheckXMLStruct();
 	  }
 
 	  @Override
@@ -30,14 +30,14 @@ public class LoginXMLHandler extends DefaultHandler
 	  public void startElement(String namespaceURI, String localName,
 	            String qName, Attributes atts) throws SAXException 
 	  {
-	       if (localName.toLowerCase().equals("result")) {
+	       if (localName.toLowerCase().equals("check")) {
 	           this.h_scuess = true;
 	       }
 	  }
 	  @Override
 	  public void endElement(String namespaceURI, String localName, String qName)
 	           throws SAXException {
-	    if (localName.toLowerCase().equals("result")) {
+	    if (localName.toLowerCase().equals("check")) {
 		      this.h_scuess = false;
 	    }
 	  }
@@ -46,7 +46,7 @@ public class LoginXMLHandler extends DefaultHandler
 	  @Override
 	 public void characters(char ch[], int start, int length) {
 	    if(this.h_scuess){
-	       myParsedExampleDataSet.setscuess(Double.parseDouble(new String(ch,start,length)));
+	       myParsedExampleDataSet.setscuess(Integer.parseInt(new String(ch,start,length)));
 	    }
 	 }
 
