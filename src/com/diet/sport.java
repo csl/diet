@@ -37,6 +37,8 @@ public class sport extends Activity implements OnClickListener
 	private Spinner sr[]; 
     public static double hot = 0;
     
+    sport mysport = this;
+    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -238,26 +240,48 @@ public class sport extends Activity implements OnClickListener
     	String listv = "";
     	for (int j=0; j<listarray.size(); j++)
     	{
-    			listv = listv + listarray.get(j) + ","; 
+    			listv = listv + listarray.get(j) + "\n"; 
     	}
     	
     	return listv;
     }
 
-	private void openOptionsDialog(String info)
+    private void openOptionsDialog(String info)
 	{
+    	/*
 	    new AlertDialog.Builder(this)
-	    .setTitle("訊息")
+	    .setTitle("msg")
 	    .setMessage(info)
 	    .setPositiveButton("OK",
 	        new DialogInterface.OnClickListener()
 	        {
 	         public void onClick(DialogInterface dialoginterface, int i)
 	         {
-	        	 
+	          	    new AlertDialog.Builder(mysport)
+	        	      .setTitle("問題")
+	        	      .setMessage("是否上傳今日記綠")
+	        	      .setNegativeButton("NO",
+	        	          new DialogInterface.OnClickListener() {
+	        	          
+	        	            public void onClick(DialogInterface dialoginterface, int i) {
+	        	              
+	        	            }
+	        	      }
+	        	      )
+	        	   
+	        	      .setPositiveButton("YES",
+	        	          new DialogInterface.OnClickListener() {
+	        	          public void onClick(DialogInterface dialoginterface, int i) 
+	        	          {
+	        	        	  main.mymain.check_upload();
+	        	          }
+	        	          
+	        	      }
+	        	      )
+	        	      .show();	       	        	 
 	         }
 	         }
 	        )
-	    .show();
+	    .show();*/
 	  }
 }

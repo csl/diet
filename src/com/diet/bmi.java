@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,6 +29,8 @@ public class bmi extends Activity implements OnClickListener
     public ProgressDialog myDialog = null;
     
     static double bmi = 0;
+    
+    bmi mybmi = this;
     
     /** Called when the activity is first created. */
     @Override
@@ -64,8 +67,10 @@ public class bmi extends Activity implements OnClickListener
 	        	
 	        	int h = Integer.valueOf(height.getText().toString());
 	        	int w = Integer.valueOf(weight.getText().toString());
+	        	
+	        	double h2 = (double) h/100;
 	        		        	
-	        	bmi = (double) h / w;
+	        	bmi = (double) w / (h2 * h2);
 	        	
 	        	String msg = "您的BMI值為: " + bmi;
 	        	
@@ -94,7 +99,8 @@ public class bmi extends Activity implements OnClickListener
 	        		msg = msg + "\n重度肥胖";
 	        	}
 	        	result.setText(msg);
-	        	
+	        	openOptionsDialog(msg);
+
 	        	break;
     	}
     }
@@ -109,7 +115,32 @@ public class bmi extends Activity implements OnClickListener
 	        {
 	         public void onClick(DialogInterface dialoginterface, int i)
 	         {
-	        	 
+	          	    new AlertDialog.Builder(mybmi)
+	        	      .setTitle("問題")
+	        	      .setMessage("是否要繼續計算食物攝取")
+	        	      .setNegativeButton("NO",
+	        	          new DialogInterface.OnClickListener() {
+	        	          
+	        	            public void onClick(DialogInterface dialoginterface, int i) {
+	        	              
+	        	            }
+	        	      }
+	        	      )
+	        	   
+	        	      .setPositiveButton("YES",
+	        	          new DialogInterface.OnClickListener() {
+	        	          public void onClick(DialogInterface dialoginterface, int i) 
+	        	          {
+	        	        	    Intent  intent = new Intent();
+			    				intent.setClass(bmi.this, food.class);
+			    		
+			    				startActivity(intent);
+			    				finish();
+	        	          }
+	        	          
+	        	      }
+	        	      )
+	        	      .show();	       	        	 
 	         }
 	         }
 	        )

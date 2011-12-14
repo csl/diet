@@ -24,6 +24,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,6 +52,7 @@ public class main extends Activity
     
    	String url_list;
     
+   	static main mymain;
     
     /** Called when the activity is first created. */
     @Override
@@ -60,6 +62,8 @@ public class main extends Activity
         setContentView(R.layout.main);
         
         Bundle bData = this.getIntent().getExtras();
+        
+        mymain=this;
         
         // 取得 Bundle 中的資料
         account = bData.getString("account");
@@ -140,6 +144,9 @@ public class main extends Activity
 		    				startActivity(intent);
 	        			   	break;
 	        		   case 3:
+	        			   Uri uri = Uri.parse("http://www.synergy.tw/health/index.php");
+	        			   intent = new Intent(Intent.ACTION_VIEW, uri);
+	        			   startActivity(intent);
 
 	        			   	break;
 	        		   case 4:

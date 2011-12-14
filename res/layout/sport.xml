@@ -56,14 +56,22 @@ android:layout_height="60px"
     android:layout_height="68px"
     android:baselineAligned="false"
     android:orientation="horizontal" >
+<ScrollView   
+        android:id="@+id/ScrollView01"  
+      android:layout_height="200px"   
+      android:layout_width="fill_parent">  
 
-    <TextView
-        android:id="@+id/wmsg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="運動清單"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+
+<TextView
+    android:id="@+id/wmsg"
+    android:layout_width="fill_parent"
+    android:layout_height="200px"
+    android:text="清單"
+    android:textColor="@color/black"
+    android:textSize="20sp" />
+  
+</ScrollView>
+
 
 <Button
 android:id="@+id/schoice"
@@ -83,13 +91,13 @@ android:text="請選擇">
 
 <ScrollView   
         android:id="@+id/ScrollView01"  
-      android:layout_height="150px"   
+      android:layout_height="180px"   
       android:layout_width="fill_parent">  
-
+
 <TextView
     android:id="@+id/showlist"
     android:layout_width="fill_parent"
-    android:layout_height="137px"
+    android:layout_height="136dp"
     android:text="清單"
     android:textColor="@color/black"
     android:textSize="20sp" />

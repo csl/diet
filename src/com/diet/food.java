@@ -36,6 +36,7 @@ public class food extends Activity implements OnClickListener
 	private TextView cb[];
 	private EditText et[]; 
     public static int hot = 0;
+    food mydiet = this;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -215,14 +216,39 @@ public class food extends Activity implements OnClickListener
 	private void openOptionsDialog(String info)
 	{
 	    new AlertDialog.Builder(this)
-	    .setTitle("about me")
+	    .setTitle("message")
 	    .setMessage(info)
 	    .setPositiveButton("OK",
 	        new DialogInterface.OnClickListener()
 	        {
 	         public void onClick(DialogInterface dialoginterface, int i)
 	         {
-	        	 
+	          	    new AlertDialog.Builder(mydiet)
+	        	      .setTitle("問題")
+	        	      .setMessage("是否要繼續計算運動耗量")
+	        	      .setNegativeButton("NO",
+	        	          new DialogInterface.OnClickListener() {
+	        	          
+	        	            public void onClick(DialogInterface dialoginterface, int i) {
+	        	              
+	        	            }
+	        	      }
+	        	      )
+	        	   
+	        	      .setPositiveButton("YES",
+	        	          new DialogInterface.OnClickListener() {
+	        	          public void onClick(DialogInterface dialoginterface, int i) 
+	        	          {
+	        	        	    Intent  intent = new Intent();
+			    				intent.setClass(food.this, sport.class);
+			    		
+			    				startActivity(intent);
+			    				finish();
+	        	          }
+	        	          
+	        	      }
+	        	      )
+	        	      .show();	        	
 	         }
 	         }
 	        )
