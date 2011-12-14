@@ -248,7 +248,7 @@ public class sport extends Activity implements OnClickListener
 
     private void openOptionsDialog(String info)
 	{
-    	/*
+    	
 	    new AlertDialog.Builder(this)
 	    .setTitle("msg")
 	    .setMessage(info)
@@ -257,6 +257,7 @@ public class sport extends Activity implements OnClickListener
 	        {
 	         public void onClick(DialogInterface dialoginterface, int i)
 	         {
+	        	 /*
 	          	    new AlertDialog.Builder(mysport)
 	        	      .setTitle("問題")
 	        	      .setMessage("是否上傳今日記綠")
@@ -278,10 +279,10 @@ public class sport extends Activity implements OnClickListener
 	        	          
 	        	      }
 	        	      )
-	        	      .show();	       	        	 
+	        	      .show();	*/       	        	 
 	         }
 	         }
 	        )
-	    .show();*/
+	    .show();
 	  }
 }
